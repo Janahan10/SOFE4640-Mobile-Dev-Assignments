@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EMI Calculator</string>
+    <string name="totalPaymentHeader">Estimated Total Monthly Payment:</string>
+</resources>
