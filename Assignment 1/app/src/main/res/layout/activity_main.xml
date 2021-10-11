@@ -5,41 +5,8 @@
     android:id="@+id/principleAmt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#202020"
+    android:background="@color/background"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/totalPaymentHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/totalPaymentHeader"
-        android:textColor="@color/lime_green"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/totalPayment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/totalPayment"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalPaymentHeader"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/principleAmountHeader"
@@ -54,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.005"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalPayment" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/principleAmountField"
@@ -65,7 +32,7 @@
         android:background="#505050"
         android:ems="10"
         android:hint="@string/principleAmountHint"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.296"
@@ -81,7 +48,7 @@
         android:background="#505050"
         android:ems="10"
         android:hint="@string/interestRateHint"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.296"
@@ -138,6 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/lime_green"
+        android:onClick="calculatePayment"
         android:text="@string/calculateButtonText"
         android:textColor="#000000"
         app:backgroundTint="#83FF00"
@@ -147,7 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paymentFreqField"
         app:layout_constraintVertical_bias="0.093" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
