@@ -4,9 +4,9 @@
     <string name="totalPayment">$ 0</string>
     <string name="principleAmountHeader">Enter Principle Mortgage Amount:</string>
     <string name="interestRateHeader">Enter Interest Rate:</string>
-    <string name='paymentFreqHeader'>Enter Payment Frequency:</string>
+    <string name='paymentFreqHeader'>Enter Number of Months to Pay:</string>
     <string name="principleAmountHint">Enter Principle Amount</string>
     <string name="interestRateHint">Enter Interest Rate</string>
-    <string name="paymentFreqHint">Enter Payment Frequency</string>
+    <string name="paymentFreqHint">Number of Months to Pay</string>
     <string name="calculateButtonText">Calculate</string>
 </resources>
