@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">EMI Calculator</string>
     <string name="totalPaymentHeader">Estimated Total Monthly Payment:</string>
+    <string name="totalPayment">$ 0</string>
+    <string name="principleAmountHeader">Enter Principle Mortgage Amount:</string>
+    <string name="interestRateHeader">Enter Interest Rate:</string>
+    <string name='paymentFreqHeader'>Enter Payment Frequency:</string>
+    <string name="principleAmountHint">Enter Principle Amount</string>
+    <string name="interestRateHint">Enter Interest Rate</string>
+    <string name="paymentFreqHint">Enter Payment Frequency</string>
+    <string name="calculateButtonText">Calculate</string>
 </resources>
