@@ -6,7 +6,7 @@
     <string name="interestRateHeader">Enter Interest Rate:</string>
     <string name='paymentFreqHeader'>Enter Number of Months to Pay:</string>
     <string name="principleAmountHint">Enter Principle Amount</string>
-    <string name="interestRateHint">Enter Interest Rate</string>
+    <string name="interestRateHint">Enter Interest Rate (e.g. 6 for 6%)</string>
     <string name="paymentFreqHint">Number of Months to Pay</string>
     <string name="calculateButtonText">Calculate</string>
 </resources>

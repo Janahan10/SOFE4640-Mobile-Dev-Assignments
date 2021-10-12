@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         EditText paymentMonthsText = (EditText) findViewById(R.id.paymentFreqField);
 
         int principleAmount = Integer.parseInt(principleText.getText().toString());
-        double interestRate = Double.parseDouble(interestRateText.getText().toString());
+        double interestRate = Double.parseDouble(interestRateText.getText().toString()) / 1200;
         int numMonths = Integer.parseInt(paymentMonthsText.getText().toString());
 
         double totalAmount = principleAmount * ((interestRate * Math.pow(1 + interestRate, numMonths))
