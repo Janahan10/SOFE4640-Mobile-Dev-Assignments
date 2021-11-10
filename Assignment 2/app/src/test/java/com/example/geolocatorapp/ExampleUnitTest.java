@@ -1,4 +1,4 @@
-package com.example.geolocationapp;
+package com.example.geolocatorapp;
 
 import org.junit.Test;
 
