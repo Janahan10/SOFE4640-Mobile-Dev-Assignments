@@ -1,4 +1,4 @@
-package com.example.locationservicesapp;
+package com.example.geolocationapp;
 
 import androidx.annotation.NonNull;
 
