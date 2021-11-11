@@ -37,13 +37,13 @@ public class AddNewLocation extends AppCompatActivity {
                 double latitude;
                 double longitude;
 
-                if (latitudeInput.getText().toString() == "") {
+                if (latitudeInput.getText().toString().isEmpty()) {
                     latitudeInput.setError("Latitude Value Required");
                 } else {
                     latitude = Double.parseDouble(latitudeInput.getText().toString());
                 }
 
-                if (latitudeInput.getText().toString() == "") {
+                if (latitudeInput.getText().toString().isEmpty()) {
                     longitudeInput.setError("Longitude Value Required");
                 } else {
                     longitude = Double.parseDouble(longitudeInput.getText().toString());
