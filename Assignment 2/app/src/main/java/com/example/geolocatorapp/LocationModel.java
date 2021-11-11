@@ -8,7 +8,7 @@ public class LocationModel implements Serializable {
     private double latitude;
     private double longitude;
 
-    public LocationModel(int id, String address, double latitude, double longitude) {
+    public LocationModel(int id, double latitude, double longitude, String address) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
