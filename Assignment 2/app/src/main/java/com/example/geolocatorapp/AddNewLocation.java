@@ -70,7 +70,6 @@ public class AddNewLocation extends AppCompatActivity {
                         }
 
                         LocationModel location = new LocationModel(-1, latitude, longitude, address);
-                        System.out.println(location.toString());
 
                     } catch (IOException e) {
                         e.printStackTrace();
