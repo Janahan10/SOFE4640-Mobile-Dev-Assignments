@@ -1,5 +1,6 @@
 package com.example.geolocatorapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,14 +12,18 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     private int REQUEST_CODE_ADD_LOCATION = 1;
+    private int REQUEST_CODE_EDIT_LOCATION = 2;
+
+    private LocationModel location;
+    private LocationDatabase locationDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        locationDatabase = new LocationDatabase(MainActivity.this);
 
         EditText searchInput;
-
         ImageView addButton = findViewById(R.id.addButton);
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -27,5 +32,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(getApplicationContext(), AddNewLocation.class), REQUEST_CODE_ADD_LOCATION);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_ADD_LOCATION) {
+            if (resultCode == Activity.RESULT_OK) {
+                location = (LocationModel) data.getExtras().getSerializable("location");
+            }
+        }
+
+        if (!location.getAddress().equalsIgnoreCase("error")) {
+            System.out.println(location.toString());
+            System.out.println(locationDatabase.addLocation(location));
+        }
     }
 }

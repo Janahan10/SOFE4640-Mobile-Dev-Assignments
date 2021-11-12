@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class LocationDatabase extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Locations.db";
+    private static final String DATABASE_NAME = "locations.db";
     private static final String LOCATION_TABLE = "locations";
     private static final String LOCATION_ID = "id";
     private static final String ADDRESS = "address";
@@ -15,9 +15,7 @@ public class LocationDatabase extends SQLiteOpenHelper {
     private static final String LONGITUDE = "longitude";
 
     public LocationDatabase(Context context) {
-
         super(context, DATABASE_NAME, null, 1);
-
     }
 
     @Override

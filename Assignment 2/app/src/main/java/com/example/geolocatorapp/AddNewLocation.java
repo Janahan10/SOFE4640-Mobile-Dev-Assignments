@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,8 +27,8 @@ public class AddNewLocation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                LocationModel locationModel = new LocationModel();
-                intent.putExtra("note", locationModel);
+                LocationModel locationModel = new LocationModel(-500, 0, 0, "error");
+                intent.putExtra("location", locationModel);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             }
@@ -43,6 +44,7 @@ public class AddNewLocation extends AppCompatActivity {
                 double latitude = 0;
                 double longitude = 0;
                 String address = null;
+                LocationModel location = new LocationModel(-1, latitude, longitude, address);
 
                 if (latitudeInput.getText().toString().isEmpty()) {
                     latitudeInput.setError("Latitude Value Required");
@@ -69,12 +71,21 @@ public class AddNewLocation extends AppCompatActivity {
                             address = ad.getAddressLine(0);
                         }
 
-                        LocationModel location = new LocationModel(-1, latitude, longitude, address);
-
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+                try {
+                    location = new LocationModel(-1, latitude, longitude, address);
+                } catch (Exception e) {
+                    Toast.makeText(AddNewLocation.this, "Error adding location",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("location", location);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
             }
         });
     }
