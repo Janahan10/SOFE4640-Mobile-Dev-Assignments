@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 location = (LocationModel) data.getExtras().getSerializable("location");
             }
         }
+        System.out.println("LOCATION ----> " + location.toString());
 
-        if (location.getAddress().equalsIgnoreCase("null") || !location.getAddress().equalsIgnoreCase("error")) {
+        if (location.getAddress() != null && location.getId() != -500) {
             System.out.println(locationDatabase.addLocation(location));
         }
     }

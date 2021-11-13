@@ -45,18 +45,6 @@ public class AddNewLocation extends AppCompatActivity {
                 double longitude = 0;
                 String address = null;
                 LocationModel location = null;
-//
-//                if (latitudeInput.getText().toString().isEmpty()) {
-//                    latitudeInput.setError("Latitude Value Required");
-//                } else {
-//                    latitude = Double.parseDouble(latitudeInput.getText().toString());
-//                }
-//
-//                if (latitudeInput.getText().toString().isEmpty()) {
-//                    longitudeInput.setError("Longitude Value Required");
-//                } else {
-//                    longitude = Double.parseDouble(longitudeInput.getText().toString());
-//                }
 
                 if (latitudeInput.getText().toString().isEmpty() ||
                         longitudeInput.getText().toString().isEmpty()) {
@@ -69,6 +57,9 @@ public class AddNewLocation extends AppCompatActivity {
                         longitudeInput.setError("Longitude Field cannot be empty");
                     }
                 } else {
+                    latitude = Double.parseDouble(latitudeInput.getText().toString());
+                    longitude = Double.parseDouble(longitudeInput.getText().toString());
+
                     if (Geocoder.isPresent()) {
                         Geocoder geocoder =
                                 new Geocoder(AddNewLocation.this, Locale.getDefault());
@@ -86,6 +77,7 @@ public class AddNewLocation extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
+
                     try {
                         location = new LocationModel(-1, latitude, longitude, address);
                     } catch (Exception e) {

@@ -38,7 +38,7 @@ public class LocationModel implements Serializable {
     public String toString() {
         return "LocationModel{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
+                ", address=" + address +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 '}';
