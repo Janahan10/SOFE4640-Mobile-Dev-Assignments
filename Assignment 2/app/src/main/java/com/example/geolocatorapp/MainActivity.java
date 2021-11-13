@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (!location.getAddress().equalsIgnoreCase("error")) {
-            System.out.println(location.toString());
+        if (location.getAddress().equalsIgnoreCase("null") || !location.getAddress().equalsIgnoreCase("error")) {
             System.out.println(locationDatabase.addLocation(location));
         }
     }

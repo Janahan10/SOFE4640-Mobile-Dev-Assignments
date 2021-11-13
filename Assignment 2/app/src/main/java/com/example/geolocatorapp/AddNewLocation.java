@@ -44,48 +44,60 @@ public class AddNewLocation extends AppCompatActivity {
                 double latitude = 0;
                 double longitude = 0;
                 String address = null;
-                LocationModel location = new LocationModel(-1, latitude, longitude, address);
+                LocationModel location = null;
+//
+//                if (latitudeInput.getText().toString().isEmpty()) {
+//                    latitudeInput.setError("Latitude Value Required");
+//                } else {
+//                    latitude = Double.parseDouble(latitudeInput.getText().toString());
+//                }
+//
+//                if (latitudeInput.getText().toString().isEmpty()) {
+//                    longitudeInput.setError("Longitude Value Required");
+//                } else {
+//                    longitude = Double.parseDouble(longitudeInput.getText().toString());
+//                }
 
-                if (latitudeInput.getText().toString().isEmpty()) {
-                    latitudeInput.setError("Latitude Value Required");
-                } else {
-                    latitude = Double.parseDouble(latitudeInput.getText().toString());
-                }
-
-                if (latitudeInput.getText().toString().isEmpty()) {
-                    longitudeInput.setError("Longitude Value Required");
-                } else {
-                    longitude = Double.parseDouble(longitudeInput.getText().toString());
-                }
-
-                if (Geocoder.isPresent()) {
-                    Geocoder geocoder =
-                            new Geocoder(AddNewLocation.this, Locale.getDefault());
-
-                    try {
-
-                        List<Address> result =
-                                geocoder.getFromLocation(latitude, longitude, 1);
-
-                        for (Address ad : result) {
-                            address = ad.getAddressLine(0);
-                        }
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                try {
-                    location = new LocationModel(-1, latitude, longitude, address);
-                } catch (Exception e) {
+                if (latitudeInput.getText().toString().isEmpty() ||
+                        longitudeInput.getText().toString().isEmpty()) {
                     Toast.makeText(AddNewLocation.this, "Error adding location",
                             Toast.LENGTH_SHORT).show();
-                }
+                    if (latitudeInput.getText().toString().isEmpty()) {
+                        latitudeInput.setError("Latitude Field cannot be empty");
+                    }
+                    if (longitudeInput.getText().toString().isEmpty()) {
+                        longitudeInput.setError("Longitude Field cannot be empty");
+                    }
+                } else {
+                    if (Geocoder.isPresent()) {
+                        Geocoder geocoder =
+                                new Geocoder(AddNewLocation.this, Locale.getDefault());
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("location", location);
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+                        try {
+
+                            List<Address> result =
+                                    geocoder.getFromLocation(latitude, longitude, 1);
+
+                            for (Address ad : result) {
+                                address = ad.getAddressLine(0);
+                            }
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    try {
+                        location = new LocationModel(-1, latitude, longitude, address);
+                    } catch (Exception e) {
+                        Toast.makeText(AddNewLocation.this, "Error adding location",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("location", location);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
+                }
             }
         });
     }
