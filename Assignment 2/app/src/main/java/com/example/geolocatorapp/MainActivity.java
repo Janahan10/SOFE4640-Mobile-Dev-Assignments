@@ -6,11 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +41,24 @@ public class MainActivity extends AppCompatActivity {
 
         EditText searchInput;
         ImageView addButton = findViewById(R.id.addButton);
+
+        EditText searchField = findViewById(R.id.searchField);
+        ImageView searchButton = findViewById(R.id.searchIcon);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String query = searchField.getText().toString();
+                List<LocationModel> resultLocations = locationDatabase.searchLocations(query);
+
+                Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("result", (Serializable) resultLocations);
+                intent.putExtra("bundle", bundle);
+                intent.putExtra("query", query);
+                startActivity(intent);
+            }
+        });
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

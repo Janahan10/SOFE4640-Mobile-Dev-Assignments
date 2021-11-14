@@ -81,4 +81,30 @@ public class LocationDatabase extends SQLiteOpenHelper {
 
         return result;
     }
+
+    public List<LocationModel> searchLocations(String address) {
+        List<LocationModel> results = new ArrayList<>();
+
+        String query = "select * from " + LOCATION_TABLE + " where " + ADDRESS + "=\"" + address + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String ad = cursor.getString(1);
+                double latitude = cursor.getDouble(2);
+                double longitude = cursor.getDouble(3);
+
+                LocationModel location = new LocationModel(id, latitude, longitude, ad);
+                results.add(location);
+            } while(cursor.moveToNext());
+
+            cursor.close();
+            db.close();
+            return results;
+        }
+
+        return results;
+    }
 }
